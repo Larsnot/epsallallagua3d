@@ -10,13 +10,9 @@
     <link rel="stylesheet" href="styles/main.css">
     <link rel="icon" type="image/x-icon" href="images/zyro-image2.ico">
     
-    <!-- THREE.JS DESDE CDN (ORDEN CRÍTICO) -->
-    <script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
-    <script src="https://unpkg.com/three@0.160.0/examples/js/controls/OrbitControls.js"></script>
-    <script src="https://unpkg.com/three@0.160.0/examples/js/loaders/GLTFLoader.js"></script>
-    <script src="https://unpkg.com/three@0.160.0/examples/js/loaders/OBJLoader.js"></script>
-    <script src="https://unpkg.com/three@0.160.0/examples/js/loaders/FBXLoader.js"></script>
-    <script src="https://unpkg.com/three@0.160.0/examples/js/loaders/ColladaLoader.js"></script>
+    <!-- MODEL-VIEWER (MÁS SIMPLE QUE THREE.JS) -->
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+    <script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
     
     <!-- ESTILOS CSS PARA 3D -->
     <style>
@@ -36,53 +32,24 @@
             border: 2px solid #dee2e6;
         }
         
-        .escudo-3d-controls {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: rgba(255, 255, 255, 0.95);
-            padding: 15px;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            z-index: 100;
-            min-width: 220px;
-            backdrop-filter: blur(10px);
+        .escudo-3d-viewer {
+            width: 100%;
+            height: 100%;
+            --poster-color: transparent;
         }
         
-        .control-group {
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+        /* Controles suaves del modelo */
+        model-viewer {
+            --poster-color: #f5f5f5;
+            --progress-bar-color: #007bff;
+            --progress-bar-height: 3px;
         }
         
-        .control-group label {
-            font-size: 0.9rem;
-            color: #333;
-            font-weight: 500;
-            margin-right: 10px;
-        }
-        
-        .control-group button {
-            padding: 8px 15px;
-            background: var(--primary-500, #007bff);
-            color: white;
-            border: none;
-            border-radius: 6px;
-            font-size: 0.8rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .control-group button:hover {
-            background: var(--primary-600, #0056b3);
-            transform: translateY(-1px);
-        }
-        
-        .control-group input[type="checkbox"] {
-            cursor: pointer;
-            width: 18px;
-            height: 18px;
+        /* Auto-rotación y efectos */
+        model-viewer {
+            --auto-rotate: 1;
+            --interaction-prompt: auto;
+            --interaction-prompt-style: soft;
         }
         
         .section-header {
@@ -110,14 +77,6 @@
                 height: 400px;
             }
             
-            .escudo-3d-controls {
-                position: relative;
-                top: auto;
-                right: auto;
-                margin-top: 15px;
-                width: 100%;
-            }
-            
             .section-title {
                 font-size: 2rem;
             }
@@ -131,6 +90,33 @@
         
         .escudo-3d-container {
             animation: fadeIn 0.8s ease-out;
+        }
+        
+        /* Loading personalizado */
+        .model-loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: #666;
+            font-family: Arial, sans-serif;
+            z-index: 10;
+        }
+        
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #007bff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 15px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
     </style>
 </head>
@@ -243,7 +229,7 @@
         </div>
     </section>
 
-    <!-- SECCIÓN 3D DEL ESCUDO -->
+    <!-- SECCIÓN 3D DEL ESCUDO - MODEL-VIEWER -->
     <section class="escudo-3d-section">
         <div class="container">
             <div class="section-header">
@@ -251,46 +237,35 @@
                 <p class="section-subtitle">Modelo 3D interactivo de la identidad institucional</p>
             </div>
             
-            <div class="escudo-3d-container" id="escudo-3d-container">
-                <!-- Controles 3D -->
-                <div class="escudo-3d-controls">
-                    <div class="control-group">
-                        <label>🔄 Restaurar Vista</label>
-                        <button id="resetCamera">Click</button>
+            <div class="escudo-3d-container">
+                <!-- MODELO 3D CON AUTO-ROTACIÓN -->
+                <model-viewer 
+                    id="escudo-model"
+                    class="escudo-3d-viewer"
+                    src="models3d/escudo.glb"
+                    alt="Escudo EPSA 3D"
+                    auto-rotate
+                    rotation-per-second="30deg"
+                    camera-controls
+                    interaction-prompt="auto"
+                    shadow-intensity="1"
+                    environment-image="legacy"
+                    exposure="1"
+                    style="background: transparent;"
+                    loading="eager"
+                    reveal="auto">
+                    
+                    <!-- Loading personalizado -->
+                    <div slot="poster" class="model-loading">
+                        <div class="loading-spinner"></div>
+                        <p>Cargando modelo 3D...</p>
                     </div>
                     
-                    <div class="control-group">
-                        <label>⚡ Rotación Auto</label>
-                        <input type="checkbox" id="autoRotate">
-                    </div>
-                    
-                    <div class="control-group">
-                        <label>💡 Ayuda</label>
-                        <button onclick="show3DHelp()">?</button>
-                    </div>
-                </div>
-                
-                <!-- Mensaje de inicialización -->
-                <div id="init-message" style="
-                    position: absolute;
-                    top: 50%;
-                    left: 50%;
-                    transform: translate(-50%, -50%);
-                    text-align: center;
-                    color: #666;
-                    font-family: Arial, sans-serif;
-                ">
-                    <div style="
-                        border: 3px solid #f3f3f3;
-                        border-top: 3px solid #3498db;
-                        border-radius: 50%;
-                        width: 30px;
-                        height: 30px;
-                        animation: spin 1s linear infinite;
-                        margin: 0 auto 15px;
-                    "></div>
-                    <p>Inicializando modelo 3D...</p>
-                </div>
+                    <!-- Botón de carga manual si falla auto -->
+                    <button slot="ar-button" style="background: #007bff; color: white; border: none; padding: 12px 24px; border-radius: 25px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 14px; cursor: pointer;">
+                        Ver en AR
+                    </button>
+                </model-viewer>
             </div>
         </div>
     </section>
@@ -316,7 +291,7 @@
                     <h4>Contacto</h4>
                     <p>📍 Llallagua, Potosí, Bolivia</p>
                     <p>📞 Línea de emergencias: 24/7</p>
-                    <p>📧 <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="c3a0acadb0b6afb7a2b083a6b3b0a2eda4aca1eda1ac">[email&#160;protected]</a></p>
+                    <p>📧 <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="6f0c00011c1a031b0e1c2f0a1f1c0e4108000d410d00">[email&#160;protected]</a></p>
                 </div>
             </div>
             <div class="footer-bottom">
@@ -325,75 +300,66 @@
         </div>
     </footer>
 
-    <!-- SCRIPT 3D ULTRA ROBUSTO -->
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="scripts/escudo3d-ULTRA-ROBUSTO.js"></script>
-    
     <!-- SCRIPT DE NAVEGACIÓN -->
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Mobile menu toggle
         document.getElementById('mobileMenuToggle').addEventListener('click', function() {
             document.getElementById('navbarNav').classList.toggle('active');
         });
 
-        // Función de ayuda 3D
-        function show3DHelp() {
-            alert(`🎯 CONTROLES 3D - EPSA BUSTILLO
-
-🖱️ CONTROLES DE MOUSE:
-• Arrastra para rotar la vista
-• Scroll del mouse para hacer zoom
-• Clic derecho para mover la cámara
-
-⚙️ CONTROLES AUTOMÁTICOS:
-• 🔄 Restaurar Vista: Vuelve a la posición original
-• ⚡ Rotación Auto: Gira el modelo automáticamente
-
-💡 CONSEJOS ÚTILES:
-• Arrastra suavemente para mejores resultados
-• Usa el scroll para zoom preciso
-• El modelo se centra automáticamente
-• Soporta archivos .glb, .gltf, .obj, .fbx, .dae
-
-🌐 SOPORTE:
-Si tienes problemas, verifica tu conexión a internet`);
-        }
-
-        // Verificación de carga de Three.js
-        window.addEventListener('load', function() {
-            console.log('🔍 Verificando carga de Three.js...');
+        // Configuración del modelo 3D
+        document.addEventListener('DOMContentLoaded', function() {
+            const modelViewer = document.getElementById('escudo-model');
             
-            setTimeout(() => {
-                if (typeof THREE === 'undefined') {
-                    console.error('❌ Three.js no está disponible');
-                    const container = document.getElementById('escudo-3d-container');
-                    if (container) {
-                        const initMsg = document.getElementById('init-message');
-                        if (initMsg) {
-                            initMsg.innerHTML = `
-                                <div style="color: #e74c3c;">
-                                    <h3>❌ Error de Conexión</h3>
-                                    <p>Three.js no se pudo cargar.</p>
-                                    <button onclick="location.reload()" style="
-                                        background: #3498db; 
-                                        color: white; 
-                                        border: none; 
-                                        padding: 10px 20px; 
-                                        border-radius: 5px; 
-                                        cursor: pointer;
-                                        margin-top: 10px;
-                                    ">🔄 Recargar Página</button>
-                                </div>
-                            `;
-                        }
-                    }
-                } else {
-                    console.log('✅ Three.js cargado correctamente (v' + THREE.REVISION + ')');
-                    const initMsg = document.getElementById('init-message');
-                    if (initMsg) {
-                        initMsg.style.display = 'none';
-                    }
-                }
-            }, 2000);
+            if (modelViewer) {
+                // Verificar que el modelo se carga correctamente
+                modelViewer.addEventListener('load', function() {
+                    console.log('✅ Modelo 3D cargado exitosamente');
+                });
+                
+                modelViewer.addEventListener('error', function(event) {
+                    console.error('❌ Error cargando modelo:', event.detail);
+                    
+                    // Mostrar mensaje de error elegante
+                    const container = modelViewer.parentElement;
+                    container.innerHTML = `
+                        <div style="
+                            display: flex; 
+                            flex-direction: column; 
+                            align-items: center; 
+                            justify-content: center; 
+                            height: 100%; 
+                            text-align: center; 
+                            padding: 40px;
+                            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+                            color: white;
+                            font-family: Arial, sans-serif;
+                        ">
+                            <h2 style="margin: 0 0 20px 0;">❌ Modelo no encontrado</h2>
+                            <p style="margin: 0 0 20px 0;">Verifica que el archivo esté en la carpeta models/</p>
+                            <button onclick="location.reload()" style="
+                                background: white; 
+                                color: #333; 
+                                border: none; 
+                                padding: 12px 24px; 
+                                border-radius: 25px; 
+                                font-size: 16px; 
+                                cursor: pointer; 
+                                font-weight: bold;
+                            ">🔄 Recargar Página</button>
+                        </div>
+                    `;
+                });
+                
+                // Configuración adicional del modelo
+                modelViewer.addEventListener('camera-change', function() {
+                    // Evento cuando la cámara cambia (usuario interacting)
+                });
+                
+                console.log('🎯 Model-Viewer configurado correctamente');
+            } else {
+                console.error('❌ Elemento #escudo-model no encontrado');
+            }
         });
         
         // Animación de entrada
