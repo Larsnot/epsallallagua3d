@@ -44,8 +44,8 @@ function init() {
 
     const loader = new GLTFLoader();
     
-    // Tu modelo EPSA - cambiar la ruta si es necesario
-    loader.load('./models3d/escudo.glb', function (gltf) {
+    
+    loader.load('./models3d/pico.glb', function (gltf) {
         model = gltf.scene;
         scene.add(model);
 
@@ -87,7 +87,7 @@ function init() {
         errorDiv.innerHTML = `
             <div style="padding: 20px; text-align: center; background: #ffebee; border: 1px solid #ffcdd2; margin: 20px;">
                 <h3>⚠️ Error cargando modelo 3D</h3>
-                <p>Verifica que el archivo existe en: <code>./models/epsal-escudo.glb</code></p>
+                <p>Verifica que el archivo existe en: <code>./models3d/escudo.glb</code></p>
                 <p><small>Si tu modelo tiene otro nombre, cambia la ruta en el código</small></p>
             </div>
         `;
