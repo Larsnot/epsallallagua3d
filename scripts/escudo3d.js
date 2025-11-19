@@ -523,7 +523,7 @@ function initializeEscudo3D() {
         
         // Verificar que Three.js esté disponible
         if (typeof THREE === 'undefined') {
-            throw new Error('Three.js no está cargado. Verifica tu conexión a internet.');
+            throw new Error('Three.js no está cargado. Verifica tu conexión a INTERNETTTTT.');
         }
 
         // Crear instancia del visualizador 3D
