@@ -9,130 +9,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/main.css">
     <link rel="icon" type="image/x-icon" href="images/zyro-image2.ico">
-    
-    <!-- THREE.JS DESDE CDN (ORDEN CRÍTICO) -->
-    <script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
-    <script src="https://unpkg.com/three@0.160.0/examples/js/controls/OrbitControls.js"></script>
-    <script src="https://unpkg.com/three@0.160.0/examples/js/loaders/GLTFLoader.js"></script>
-    <script src="https://unpkg.com/three@0.160.0/examples/js/loaders/OBJLoader.js"></script>
-    <script src="https://unpkg.com/three@0.160.0/examples/js/loaders/FBXLoader.js"></script>
-    <script src="https://unpkg.com/three@0.160.0/examples/js/loaders/ColladaLoader.js"></script>
-    
-    <!-- ESTILOS CSS PARA 3D -->
-    <style>
-        .escudo-3d-section {
-            padding: 4rem 0;
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-        }
-        
-        .escudo-3d-container {
-            position: relative;
-            width: 100%;
-            height: 500px;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            background: #f5f5f5;
-            border: 2px solid #dee2e6;
-        }
-        
-        .escudo-3d-controls {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: rgba(255, 255, 255, 0.95);
-            padding: 15px;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            z-index: 100;
-            min-width: 220px;
-            backdrop-filter: blur(10px);
-        }
-        
-        .control-group {
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-        
-        .control-group label {
-            font-size: 0.9rem;
-            color: #333;
-            font-weight: 500;
-            margin-right: 10px;
-        }
-        
-        .control-group button {
-            padding: 8px 15px;
-            background: var(--primary-500, #007bff);
-            color: white;
-            border: none;
-            border-radius: 6px;
-            font-size: 0.8rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .control-group button:hover {
-            background: var(--primary-600, #0056b3);
-            transform: translateY(-1px);
-        }
-        
-        .control-group input[type="checkbox"] {
-            cursor: pointer;
-            width: 18px;
-            height: 18px;
-        }
-        
-        .section-header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-        
-        .section-title {
-            font-size: 2.5rem;
-            font-weight: 600;
-            color: var(--primary-700, #0056b3);
-            margin-bottom: 1rem;
-        }
-        
-        .section-subtitle {
-            font-size: 1.1rem;
-            color: #666;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .escudo-3d-container {
-                height: 400px;
-            }
-            
-            .escudo-3d-controls {
-                position: relative;
-                top: auto;
-                right: auto;
-                margin-top: 15px;
-                width: 100%;
-            }
-            
-            .section-title {
-                font-size: 2rem;
-            }
-        }
-        
-        /* Animaciones */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .escudo-3d-container {
-            animation: fadeIn 0.8s ease-out;
-        }
-    </style>
 </head>
 <body>
     <!-- Header/Navigation -->
@@ -214,83 +90,243 @@
                 <div class="quick-info-item">
                     <div class="quick-info-icon">📞</div>
                     <div class="quick-info-content">
-                        <h4>Atención 24/7</h4>
-                        <p>Línea de emergencias</p>
+                        <h4>5821669</h4>
+                        <p>Teléfono de contacto</p>
                     </div>
                 </div>
                 <div class="quick-info-item">
-                    <div class="quick-info-icon">💧</div>
+                    <div class="quick-info-icon">📧</div>
                     <div class="quick-info-content">
-                        <h4>Agua Potable</h4>
-                        <p>Calidad garantizada</p>
+                        <h4><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="2b4e5b584a47474a47474a4c5e4a6b4c464a424705484446">[email&#160;protected]</a></h4>
+                        <p>Correo electrónico</p>
                     </div>
                 </div>
                 <div class="quick-info-item">
-                    <div class="quick-info-icon">🏠</div>
+                    <div class="quick-info-icon">⏰</div>
                     <div class="quick-info-content">
-                        <h4>Alcantarillado</h4>
-                        <p>Gestión integral</p>
+                        <h4>Lun - Vie: 08:00-12:00, 14:00-18:00</h4>
+                        <p>Horarios de atención</p>
                     </div>
                 </div>
                 <div class="quick-info-item">
-                    <div class="quick-info-icon">🌱</div>
+                    <div class="quick-info-icon">📍</div>
                     <div class="quick-info-content">
-                        <h4>Sostenibilidad</h4>
-                        <p>Compromiso ambiental</p>
+                        <h4>Llallagua, Catavi, Siglo XX</h4>
+                        <p>Zona de cobertura</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SECCIÓN 3D DEL ESCUDO -->
-    <section class="escudo-3d-section">
+    <!-- Services Preview Section -->
+    <section class="section">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Nuestro Escudo</h2>
-                <p class="section-subtitle">Modelo 3D interactivo de la identidad institucional</p>
+                <h2 class="section-title">Nuestros Servicios</h2>
+                <p class="section-subtitle">Servicios completos de agua potable y saneamiento</p>
             </div>
             
-            <div class="escudo-3d-container" id="escudo-3d-container">
-                <!-- Controles 3D -->
-                <div class="escudo-3d-controls">
-                    <div class="control-group">
-                        <label>🔄 Restaurar Vista</label>
-                        <button id="resetCamera">Click</button>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">💧</div>
+                    <h3 class="service-title">Agua Potable</h3>
+                    <p class="service-description">Captación, tratamiento y distribución de agua potable de calidad para toda la comunidad de Bustillo.</p>
+                    <a href="servicios.html#agua-potable" class="btn btn-primary">Conocer Más</a>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">🏗️</div>
+                    <h3 class="service-title">Alcantarillado Sanitario</h3>
+                    <p class="service-description">Sistema completo de recolección, tratamiento y disposición de aguas residuales.</p>
+                    <a href="servicios.html#alcantarillado" class="btn btn-primary">Conocer Más</a>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">📱</div>
+                    <h3 class="service-title">Facturación Digital</h3>
+                    <p class="service-description">Servicios digitales modernos para mayor comodidad de nuestros usuarios.</p>
+                    <a href="servicios.html#facturacion-digital" class="btn btn-primary">Conocer Más</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Company Preview Section -->
+    <section class="section section-alt">
+        <div class="container">
+            <div class="institution-grid">
+                <div class="institution-content">
+                    <div class="section-header" style="text-align: left; margin-bottom: var(--space-lg);">
+                        <h2 class="section-title">Nuestra Institución</h2>
                     </div>
                     
-                    <div class="control-group">
-                        <label>⚡ Rotación Auto</label>
-                        <input type="checkbox" id="autoRotate">
+                    <div class="institution-item">
+                        <h3 class="institution-title">Misión</h3>
+                        <p class="institution-text">Proporcionar servicios de agua potable y alcantarillado sanitario a la población del Commonwealth de Bustillo, con equidad, calidad, continuidad, solidaridad y eficiencia, buscando la autosostenibilidad.</p>
                     </div>
                     
-                    <div class="control-group">
-                        <label>💡 Ayuda</label>
-                        <button onclick="show3DHelp()">?</button>
+                    <div class="institution-item">
+                        <h3 class="institution-title">Visión</h3>
+                        <p class="institution-text">Ser una entidad institucionalmente consolidada, identificada con la población mediante una gestión eficiente y transparente en la prestación de servicios de agua potable y alcantarillado sanitario.</p>
+                    </div>
+                    
+                    <div class="institution-item">
+                        <h3 class="institution-title">Valores</h3>
+                        <ul class="values-list">
+                            <li>Equidad</li>
+                            <li>Calidad</li>
+                            <li>Continuidad</li>
+                            <li>Solidaridad</li>
+                            <li>Eficiencia</li>
+                        </ul>
+                    </div>
+                    
+                    <a href="institucion.html" class="btn btn-primary">Conocer Más</a>
+                </div>
+                
+                <div class="institution-image">
+                    <div class="escudo-3d-container" id="escudo-3d-container">
+                        <div class="loading-overlay">
+                            <div class="loading-spinner"></div>
+                            <p>Cargando modelo 3D...</p>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Controles del modelo 3D -->
+                    <div class="escudo-controls" id="escudo-controls">
+                        <div class="control-group">
+                            <button id="reset-view" class="control-btn" title="Resetear Vista">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/>
+                                    <path d="M21 3v5h-5"/>
+                                </svg>
+                            </button>
+                            
+                            <button id="stats-toggle" class="control-btn" title="Mostrar/Ocultar Estadísticas">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M3 3v18h18"/>
+                                    <path d="M18 17V9"/>
+                                    <path d="M13 17V5"/>
+                                    <path d="M8 17v-3"/>
+                                </svg>
+                            </button>
+                            
+                            <button id="grid-toggle" class="control-btn" title="Mostrar/Ocultar Grid">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M3 3h18v18H3zM9 9v6M15 9v6M9 15h6"/>
+                                </svg>
+                            </button>
+                        </div>
+                        
+                        <div class="control-group">
+                            <label class="control-label">Auto-rotación</label>
+                            <input type="checkbox" id="auto-rotate-toggle" checked>
+                        </div>
+                        
+                        <div class="control-group">
+                            <label class="control-label">Velocidad</label>
+                            <input type="range" id="rotation-speed" min="1" max="10" value="5" step="1">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Preview Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Galería</h2>
+                <p class="section-subtitle">Conoce nuestras instalaciones y proyectos</p>
+            </div>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="images/represa.jpg" alt="Represa" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <h4>Represa Principal</h4>
+                        <p>Fuente de captación de agua</p>
                     </div>
                 </div>
                 
-                <!-- Mensaje de inicialización -->
-                <div id="init-message" style="
-                    position: absolute;
-                    top: 50%;
-                    left: 50%;
-                    transform: translate(-50%, -50%);
-                    text-align: center;
-                    color: #666;
-                    font-family: Arial, sans-serif;
-                ">
-                    <div style="
-                        border: 3px solid #f3f3f3;
-                        border-top: 3px solid #3498db;
-                        border-radius: 50%;
-                        width: 30px;
-                        height: 30px;
-                        animation: spin 1s linear infinite;
-                        margin: 0 auto 15px;
-                    "></div>
-                    <p>Inicializando modelo 3D...</p>
+                <div class="gallery-item">
+                    <img src="images/planta-tratamiento.jpg" alt="Planta de Tratamiento" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <h4>Planta de Tratamiento</h4>
+                        <p>Procesamiento de agua potable</p>
+                    </div>
                 </div>
+                
+                <div class="gallery-item">
+                    <img src="images/laboratorio.jpg" alt="Laboratorio" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <h4>Laboratorio de Calidad</h4>
+                        <p>Control de calidad del agua</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="gallery-actions">
+                <a href="galeria.html" class="btn btn-primary">Ver Todas las Fotos</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Preview Section -->
+    <section class="section section-alt">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Noticias y Comunicados</h2>
+                <p class="section-subtitle">Mantente informado sobre nuestras actividades</p>
+            </div>
+            
+            <div class="news-grid">
+                <article class="news-card">
+                    <div class="news-image">
+                        <img src="images/WhatsApp.jpg" alt="Noticia 1">
+                        <div class="news-date">20 Feb 2024</div>
+                    </div>
+                    <div class="news-content">
+                        <h3 class="news-title">Ruptura en Red de Agua en Hospital Madre Obrera</h3>
+                        <p class="news-excerpt">Se registraron trabajos de reparación urgentes en la red de distribución de agua potable debido a una ruptura causada por maquinaria agrícola en la zona del Hospital Madre Obrera en Llallagua.</p>
+                        <a href="noticias.html" class="news-link">Leer más</a>
+                    </div>
+                </article>
+                
+                <article class="news-card">
+                    <div class="news-image">
+                        <img src="images/visita-estudiantes.jpg" alt="Noticia 2">
+                        <div class="news-date">15 Feb 2024</div>
+                    </div>
+                    <div class="news-content">
+                        <h3 class="news-title">Visita Educativa de Estudiantes</h3>
+                        <p class="news-excerpt">Estudiantes de Comunicación Social de UNS XX realizaron una visita guiada a nuestras instalaciones para conocer los procesos de captación y tratamiento del agua potable.</p>
+                        <a href="noticias.html" class="news-link">Leer más</a>
+                    </div>
+                </article>
+            </div>
+            
+            <div class="news-actions">
+                <a href="noticias.html" class="btn btn-secondary">Ver Todas las Noticias</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact CTA Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">¿Necesitas Nuestros Servicios?</h2>
+                <p class="section-subtitle">Estamos aquí para atenderte y resolver todas tus consultas</p>
+            </div>
+            
+            <div style="text-align: center;">
+                <a href="contacto.html" class="btn btn-primary btn-lg">Contactanos Ahora</a>
             </div>
         </div>
     </section>
@@ -300,116 +336,68 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3>EPSA BUSTILLO</h3>
-                    <p>Comprometidos con el desarrollo sostenible de Llallagua a través de servicios de agua potable y alcantarillado de calidad.</p>
+                    <div class="footer-brand">
+                        <img src="images/LOGO-EPSA.png" alt="EPSA Logo" class="footer-logo">
+                        <h3>EPSA BUSTILLO M.S</h3>
+                        <p>Entidad Prestadora de Servicio de Agua potable y alcantarillado Sanitario</p>
+                    </div>
                 </div>
+                
                 <div class="footer-section">
-                    <h4>Servicios</h4>
-                    <ul>
-                        <li><a href="#">Agua Potable</a></li>
-                        <li><a href="#">Alcantarillado</a></li>
-                        <li><a href="#">Tratamiento de Aguas</a></li>
-                        <li><a href="#">Mantenimiento</a></li>
+                    <h4>Navegación</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="institucion.html">Institución</a></li>
+                        <li><a href="servicios.html">Servicios</a></li>
+                        <li><a href="historia.html">Historia</a></li>
+                        <li><a href="galeria.html">Galería</a></li>
+                        <li><a href="noticias.html">Noticias</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
                     </ul>
                 </div>
+                
                 <div class="footer-section">
                     <h4>Contacto</h4>
-                    <p>📍 Llallagua, Potosí, Bolivia</p>
-                    <p>📞 Línea de emergencias: 24/7</p>
-                    <p>📧 <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="0e6d61607d7b627a6f7d4e6b7e7d6f2069616c206c61">[email&#160;protected]</a></p>
+                    <ul class="footer-contact">
+                        <li>📍 Calle 25 de Mayo, Llallagua</li>
+                        <li>📞 5821669</li>
+                        <li>📧 <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="6401141705080805080805031105240309050d084a070b09">[email&#160;protected]</a></li>
+                        <li>⏰ Lun-Vie: 08:00-12:00, 14:00-18:00</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Servicios</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Descargar Factura</a></li>
+                        <li><a href="#">Consultar Deuda</a></li>
+                        <li><a href="#">Reportar Avería</a></li>
+                        <li><a href="convocatorias.html">Convocatorias</a></li>
+                        <li><a href="#">Área Cliente</a></li>
+                    </ul>
                 </div>
             </div>
+            
             <div class="footer-bottom">
-                <p>&copy; 2024 EPSA-BUSTILLO. Todos los derechos reservados.</p>
+                <p>&copy; 2024 EPSA BUSTILLO M.S - Entidad Prestadora de Servicio de Agua potable y alcantarillado Sanitario. Todos los derechos reservados.</p>
+                <p>Desarrollado por: Victor Ibañez Gareca - <a href="https://wa.me/59160466476" target="_blank">WhatsApp</a></p>
             </div>
         </div>
     </footer>
 
-    <!-- SCRIPT 3D ULTRA ROBUSTO -->
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="scripts/escudo3d-ULTRA-ROBUSTO.js"></script>
-    
-    <!-- SCRIPT DE NAVEGACIÓN -->
-    <script>
-        // Mobile menu toggle
-        document.getElementById('mobileMenuToggle').addEventListener('click', function() {
-            document.getElementById('navbarNav').classList.toggle('active');
-        });
+    <!-- Image Modal -->
+    <div class="image-modal" id="imageModal">
+        <div class="modal-content">
+            <span class="modal-close" id="modalClose">&times;</span>
+            <img class="modal-image" id="modalImage" src="" alt="">
+            <div class="modal-caption" id="modalCaption"></div>
+            <button class="modal-nav modal-prev" id="modalPrev">&#10094;</button>
+            <button class="modal-nav modal-next" id="modalNext">&#10095;</button>
+        </div>
+    </div>
 
-        // Función de ayuda 3D
-        function show3DHelp() {
-            alert(`🎯 CONTROLES 3D - EPSA BUSTILLO
-
-🖱️ CONTROLES DE MOUSE:
-• Arrastra para rotar la vista
-• Scroll del mouse para hacer zoom
-• Clic derecho para mover la cámara
-
-⚙️ CONTROLES AUTOMÁTICOS:
-• 🔄 Restaurar Vista: Vuelve a la posición original
-• ⚡ Rotación Auto: Gira el modelo automáticamente
-
-💡 CONSEJOS ÚTILES:
-• Arrastra suavemente para mejores resultados
-• Usa el scroll para zoom preciso
-• El modelo se centra automáticamente
-• Soporta archivos .glb, .gltf, .obj, .fbx, .dae
-
-🌐 SOPORTE:
-Si tienes problemas, verifica tu conexión a internet`);
-        }
-
-        // Verificación de carga de Three.js
-        window.addEventListener('load', function() {
-            console.log('🔍 Verificando carga de Three.js...');
-            
-            setTimeout(() => {
-                if (typeof THREE === 'undefined') {
-                    console.error('❌ Three.js no está disponible');
-                    const container = document.getElementById('escudo-3d-container');
-                    if (container) {
-                        const initMsg = document.getElementById('init-message');
-                        if (initMsg) {
-                            initMsg.innerHTML = `
-                                <div style="color: #e74c3c;">
-                                    <h3>❌ Error de Conexión</h3>
-                                    <p>Three.js no se pudo cargar.</p>
-                                    <button onclick="location.reload()" style="
-                                        background: #3498db; 
-                                        color: white; 
-                                        border: none; 
-                                        padding: 10px 20px; 
-                                        border-radius: 5px; 
-                                        cursor: pointer;
-                                        margin-top: 10px;
-                                    ">🔄 Recargar Página</button>
-                                </div>
-                            `;
-                        }
-                    }
-                } else {
-                    console.log('✅ Three.js cargado correctamente (v' + THREE.REVISION + ')');
-                    const initMsg = document.getElementById('init-message');
-                    if (initMsg) {
-                        initMsg.style.display = 'none';
-                    }
-                }
-            }, 2000);
-        });
-        
-        // Animación de entrada
-        document.addEventListener('DOMContentLoaded', function() {
-            const section = document.querySelector('.escudo-3d-section');
-            if (section) {
-                section.style.opacity = '0';
-                section.style.transform = 'translateY(30px)';
-                
-                setTimeout(() => {
-                    section.style.transition = 'all 0.8s ease-out';
-                    section.style.opacity = '1';
-                    section.style.transform = 'translateY(0)';
-                }, 300);
-            }
-        });
-    </script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="scripts/main.js"></script>
+    <script src="scripts/navigation.js"></script>
+    <script src="scripts/escudo3d.js"></script>
 </body>
 </html>
