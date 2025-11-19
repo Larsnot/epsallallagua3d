@@ -7,6 +7,7 @@ let rotationDirection = 1; // 1 = derecha, -1 = izquierda
 let maxRotationY = Math.PI / 4; // 45 grados en radianes
 let minRotationY = -Math.PI / 9; // -45 grados
 let rotationSpeed = 0.009;
+
 // Función principal para inicializar la escena
 function init() {
     createScene();
@@ -14,22 +15,24 @@ function init() {
     createRenderer();
     addLights();
 
+    // TU MODELO LOCAL - CAMBIADO AQUÍ
     loadGLBModel({
-    url: 'https://www.cgtrader.com/free-3d-print-models/jewelry/necklaces/lion-3d-bas-relief-sculpture-mode',
-    scale: 3.2,
-    offsetX: 0.3,
-    offsetY: 1.2,
-    rotationX: 2.5,
-    rotationY: 2.5,
-    rotationZ: 2.5,
-    positionX: 0,
-    positionY: 0,
-    positionZ: 0
-});
+        url: 'models3d/escudo.glb',  // ← TU ARCHIVO LOCAL
+        scale: 3.2,
+        offsetX: 0.3,
+        offsetY: 1.2,
+        rotationX: 2.5,
+        rotationY: 2.5,
+        rotationZ: 2.5,
+        positionX: 0,
+        positionY: 0,
+        positionZ: 0
+    });
 
     setupEventListeners();
     animate();
 }
+
 function createScene() {
     scene = new THREE.Scene();
 }
@@ -39,7 +42,6 @@ function createCamera() {
     camera.position.z = 5;
 }
 
-
 function createRenderer() {
     renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
@@ -47,6 +49,7 @@ function createRenderer() {
     renderer.setClearColor(0x000000, 0);
     document.getElementById('glb-model').appendChild(renderer.domElement);
 }
+
 function addLights() {
     // Primera luz
     pointLight1 = new THREE.PointLight(0xffffff, 1, 100);
@@ -61,27 +64,58 @@ function addLights() {
 }
 
 // Función para cargar el archivo GLB
-function loadGLBModel(url, posx=0, posy=0, posz=0, sizeX=1, sizeY=1, sizeZ=1, rotx=0, roty=0, rotz=0) {
+function loadGLBModel(config) {
     const loader = new GLTFLoader();
-    loader.load(url, function (gltf) {
-        glbModel = gltf.scene;
-        glbModel.scale.set(sizeX, sizeY, sizeZ);
-        glbModel.rotation.set(rotx, roty, rotz);
-        glbModel.position.set(posx, posy, posz);
+    
+    console.log('🔄 Cargando modelo:', config.url);
+    
+    loader.load(
+        config.url,
+        function (gltf) {
+            console.log('✅ Modelo cargado exitosamente:', config.url);
+            
+            glbModel = gltf.scene;
+            glbModel.scale.set(config.scale || 1, config.scale || 1, config.scale || 1);
+            glbModel.rotation.set(config.rotationX || 0, config.rotationY || 0, config.rotationZ || 0);
+            glbModel.position.set(config.positionX || 0, config.positionY || 0, config.positionZ || 0);
 
-        glbModel.traverse((node) => {
-            if (node.isMesh) {
-                node.castShadow = true;
-                // Asegurar que el material es transparente y no tiene fondo
-                node.material.transparent = false;
-                node.material.opacity = 1; // Asegura que el objeto en sí sea completamente visible
-                node.material.depthWrite = true; // Evita problemas con el orden de dibujado
+            glbModel.traverse((node) => {
+                if (node.isMesh) {
+                    node.castShadow = true;
+                    // Asegurar que el material es transparente y no tiene fondo
+                    node.material.transparent = false;
+                    node.material.opacity = 1; // Asegura que el objeto en sí sea completamente visible
+                    node.material.depthWrite = true; // Evita problemas con el orden de dibujado
+                }
+            });
+            scene.add(glbModel);
+            
+            console.log('🎯 Modelo configurado y agregado a la escena');
+        },
+        function (progress) {
+            if (progress.total > 0) {
+                const percentage = Math.round((progress.loaded / progress.total) * 100);
+                console.log(`📦 Cargando modelo... ${percentage}%`);
             }
-        });
-        scene.add(glbModel);
-    }, undefined, function (error) {
-        console.error('Error al cargar el archivo GLB:', error);
-    });
+        },
+        function (error) {
+            console.error('❌ Error al cargar el archivo GLB:', error);
+            console.error('❌ Ruta intentada:', config.url);
+            
+            // Mostrar error en pantalla
+            const container = document.getElementById('glb-model');
+            if (container) {
+                container.innerHTML = `
+                    <div style="padding: 20px; text-align: center; background: #ffebee; border: 1px solid #ffcdd2; color: #c62828; border-radius: 10px;">
+                        <h3>⚠️ Error cargando modelo 3D</h3>
+                        <p><strong>Archivo:</strong> ${config.url}</p>
+                        <p><small>Verifica que el archivo existe y la ruta es correcta</small></p>
+                        <p><small>Formatos soportados: .glb, .gltf</small></p>
+                    </div>
+                `;
+            }
+        }
+    );
 }
 
 // Función de animación
@@ -130,4 +164,6 @@ function setupEventListeners() {
 }
 
 // Inicializar la aplicación
+console.log('🚀 Iniciando visor 3D...');
+console.log('📁 Buscando archivo: models3d/escudo.glb');
 init();
