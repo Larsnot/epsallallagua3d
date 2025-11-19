@@ -14,12 +14,18 @@ function init() {
     createRenderer();
     addLights();
 
-    loadGLBModel(
-        './models3d/escudo.glb', 
-        -3.2, -0.3, -1.2,    
-        2.5, 2.5, 2.5,           
-        0, 0, 0       
-    );
+    loadGLBModel({
+    url: './models3d/escudo.glb',
+    scale: 3.2,
+    offsetX: 0.3,
+    offsetY: 1.2,
+    rotationX: 2.5,
+    rotationY: 2.5,
+    rotationZ: 2.5,
+    positionX: 0,
+    positionY: 0,
+    positionZ: 0
+});
 
     setupEventListeners();
     animate();
