@@ -1,127 +1,127 @@
-import * as THREE from 'https://esm.sh/three@0.161.0';
-import { GLTFLoader } from 'https://esm.sh/three@0.161.0/examples/jsm/loaders/GLTFLoader.js';
-import { OrbitControls } from 'https://esm.sh/three@0.161.0/examples/jsm/controls/OrbitControls.js';
+import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.116.1/build/three.module.js";
+import { GLTFLoader } from 'https://cdn.jsdelivr.net/npm/three@0.118.1/examples/jsm/loaders/GLTFLoader.js';
 
-let camera, scene, renderer, controls;
-let mixer,model;
-let time = 0;
-const clock = new THREE.Clock();
-
-init();
-animate();
-
+// Variables globales
+let scene, camera, renderer, glbModel, pointLight1, pointLight2;
+let rotationDirection = 1; // 1 = derecha, -1 = izquierda
+let maxRotationY = Math.PI / 4; // 45 grados en radianes
+let minRotationY = -Math.PI / 9; // -45 grados
+let rotationSpeed = 0.009;
+// Función principal para inicializar la escena
 function init() {
+    createScene();
+    createCamera();
+    createRenderer();
+    addLights();
+
+    loadGLBModel(
+        './models3d/escudo.glb', 
+        -3.2, -0.3, -1.2,    
+        2.5, 2.5, 2.5,           
+        0, 0, 0       
+    );
+
+    setupEventListeners();
+    animate();
+}
+function createScene() {
     scene = new THREE.Scene();
-
-    const dirLight = new THREE.DirectionalLight(0xffffff, 3);
-    dirLight.position.set(0, 20, 10);
-    scene.add(dirLight);
-
-    const ambientLight = new THREE.AmbientLight(0xffffff, 1.4);
-    scene.add(ambientLight);
-
-    renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-    renderer.setSize(window.innerWidth*0.8, window.innerHeight*0.6);
-    if(window.innerWidth < 676){
-        renderer.setSize(window.innerWidth*0.9, window.innerHeight*0.5);
-    }
-    
-    // Intentar agregar al modal si existe, si no al body
-    const modalContainer = document.getElementById('modelo3d-container');
-    if (modalContainer) {
-        modalContainer.appendChild(renderer.domElement);
-    } else {
-        document.body.appendChild(renderer.domElement);
-    }
-
-    camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight,0.1,2000);
-
-    controls = new OrbitControls(camera, renderer.domElement);
-    controls.enableDamping = true;
-    controls.dampingFactor = 0.05;
-    controls.enableZoom = true;
-    controls.enablePan = true;
-
-    const loader = new GLTFLoader();
-    
-    
-    loader.load('./models3d/pico.glb', function (gltf) {
-        model = gltf.scene;
-        scene.add(model);
-
-        if (gltf.animations && gltf.animations.length) {
-            mixer = new THREE.AnimationMixer(model);
-            const action = mixer.clipAction(gltf.animations[0]);
-            action.play();
-        }
-
-        model.traverse(function (child) {
-            if (child.isMesh) {
-                child.castShadow = true;
-                child.receiveShadow = true;
-            }
-        });
-
-        // Auto-rotación automática (la pediste)
-        model.rotation.y = 4.5;
-        model.scale.set(65,25,65);
-        if(window.innerWidth < 676){
-            model.scale.set(35,25,35);
-            model.position.set(0,-5,0);
-        }
-
-        const box = new THREE.Box3().setFromObject(model);
-        const center = new THREE.Vector3();
-        box.getCenter(center);
-        camera.position.set(center.x+3, center.y + 8, center.z + 20);
-        controls.target.copy(center);
-        controls.update();
-        
-        console.log('✅ Modelo 3D cargado correctamente');
-        
-    }, function (progress) {
-        console.log('📦 Cargando modelo... ' + Math.round((progress.loaded / progress.total * 100)) + '%');
-    }, function (error) {
-        console.error('❌ Error cargando el modelo 3D:', error);
-        const errorDiv = document.createElement('div');
-        errorDiv.innerHTML = `
-            <div style="padding: 20px; text-align: center; background: #ffebee; border: 1px solid #ffcdd2; margin: 20px;">
-                <h3>⚠️ Error cargando modelo 3D</h3>
-                <p>Verifica que el archivo existe en: <code>./models3d/escudo.glb</code></p>
-                <p><small>Si tu modelo tiene otro nombre, cambia la ruta en el código</small></p>
-            </div>
-        `;
-        const container = document.getElementById('modelo3d-container');
-        if (container) {
-            container.appendChild(errorDiv);
-        } else {
-            document.body.appendChild(errorDiv);
-        }
-    });
-
-    window.addEventListener('resize', onWindowResize);
 }
 
+function createCamera() {
+    camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    camera.position.z = 5;
+}
+
+
+function createRenderer() {
+    renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.shadowMap.enabled = true;
+    renderer.setClearColor(0x000000, 0);
+    document.getElementById('glb-model').appendChild(renderer.domElement);
+}
+function addLights() {
+    // Primera luz
+    pointLight1 = new THREE.PointLight(0xffffff, 1, 100);
+    pointLight1.position.set(0, 0, 7);
+    pointLight1.castShadow = true;
+    scene.add(pointLight1);
+
+    // Segunda luz para el cursor
+    pointLight2 = new THREE.PointLight(0xffffff, 30, 100);
+    pointLight2.castShadow = true;
+    scene.add(pointLight2);
+}
+
+// Función para cargar el archivo GLB
+function loadGLBModel(url, posx=0, posy=0, posz=0, sizeX=1, sizeY=1, sizeZ=1, rotx=0, roty=0, rotz=0) {
+    const loader = new GLTFLoader();
+    loader.load(url, function (gltf) {
+        glbModel = gltf.scene;
+        glbModel.scale.set(sizeX, sizeY, sizeZ);
+        glbModel.rotation.set(rotx, roty, rotz);
+        glbModel.position.set(posx, posy, posz);
+
+        glbModel.traverse((node) => {
+            if (node.isMesh) {
+                node.castShadow = true;
+                // Asegurar que el material es transparente y no tiene fondo
+                node.material.transparent = false;
+                node.material.opacity = 1; // Asegura que el objeto en sí sea completamente visible
+                node.material.depthWrite = true; // Evita problemas con el orden de dibujado
+            }
+        });
+        scene.add(glbModel);
+    }, undefined, function (error) {
+        console.error('Error al cargar el archivo GLB:', error);
+    });
+}
+
+// Función de animación
 function animate() {
     requestAnimationFrame(animate);
 
-    const delta = clock.getDelta();
-    time+=delta;
-    if (mixer) mixer.update(delta);
-    if(model){model.rotation.y += 0.005;} // AUTO-ROTACIÓN
+    if (glbModel) {
+        glbModel.rotation.y += rotationSpeed * rotationDirection;
+
+        if (glbModel.rotation.y >= maxRotationY) {
+            rotationDirection = -1; // Cambia dirección a la izquierda
+        } else if (glbModel.rotation.y <= minRotationY) {
+            rotationDirection = 1; // Cambia dirección a la derecha
+        }
+    }
+
     renderer.render(scene, camera);
 }
 
+// Actualizar el renderizador al cambiar el tamaño de la ventana
 function onWindowResize() {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth*0.8, window.innerHeight*0.6);
+    renderer.setSize(window.innerWidth, window.innerHeight);
 }
 
-// Mostrar errores en consola para debug
-window.addEventListener('error', function(e) {
-    console.error('🚨 Error detectado:', e.error);
-});
+// Actualizar la posición de la luz al mover el ratón
+function onMouseMove(event) {
+    const mouseX = (event.clientX / window.innerWidth) * 2 - 1;
+    const mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
 
-console.log('🎯 Script escudo3d-EPSA cargado correctamente');
-console.log('📍 Modelo esperado: ./models3d/escudo.glb');
+    const vector = new THREE.Vector3(mouseX, mouseY, 0.5);
+    vector.unproject(camera);
+
+    const dir = vector.sub(camera.position).normalize();
+    const distance = -camera.position.z / dir.z;
+    const pos = camera.position.clone().add(dir.multiplyScalar(distance));
+
+    pointLight2.position.copy(pos);
+}
+
+// Configurar los eventos
+function setupEventListeners() {
+    window.addEventListener('resize', onWindowResize, false);
+    window.addEventListener('mousemove', onMouseMove, false);
+}
+
+// Inicializar la aplicación
+init();
