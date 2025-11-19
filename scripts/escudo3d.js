@@ -124,4 +124,4 @@ window.addEventListener('error', function(e) {
 });
 
 console.log('🎯 Script escudo3d-EPSA cargado correctamente');
-console.log('📍 Modelo esperado: ./models/epsal-escudo.glb');
+console.log('📍 Modelo esperado: ./models3d/escudo.glb');
