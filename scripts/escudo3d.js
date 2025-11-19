@@ -15,7 +15,7 @@ function init() {
     addLights();
 
     loadGLBModel({
-    url: './models3d/escudo.glb',
+    url: 'https://www.cgtrader.com/free-3d-print-models/jewelry/necklaces/lion-3d-bas-relief-sculpture-mode',
     scale: 3.2,
     offsetX: 0.3,
     offsetY: 1.2,
