@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noticias | EPSA-Llallagua</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="icon" type="image/x-icon" href="images/zyro-image2.ico">
+</head>
+<body>
+    <!-- Header/Navigation -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="navbar-brand">
+                    <a href="index.html" style="display: flex; align-items: center; gap: var(--space-sm); text-decoration: none;">
+                        <img src="images/LOGO-EPSA.png" alt="EPSA Logo" class="logo">
+                        <span class="brand-text">EPSA BUSTILLO</span>
+                    </a>
+                </div>
+                
+                <div class="navbar-nav" id="navbarNav">
+                    <ul class="nav-menu">
+                        <li class="nav-item">
+                            <a href="index.html" class="nav-link">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="institucion.html" class="nav-link">Institución</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="servicios.html" class="nav-link">Servicios</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="historia.html" class="nav-link">Historia</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="galeria.html" class="nav-link">Galería</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="noticias.html" class="nav-link active">Noticias</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="explorar.html" class="nav-link">Explorar</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="contacto.html" class="nav-link">Contacto</a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="navbar-actions">
+                    <a href="#" class="btn btn-primary" id="downloadInvoice">Descargar Factura</a>
+                    <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb">
+        <div class="breadcrumb-nav">
+            <a href="index.html">Inicio</a> / <span>Noticias</span>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="page-title">Noticias y Comunicados</h1>
+            <p class="page-subtitle">Mantente informado sobre nuestras actividades y novedades</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="page-content news-page">
+        <div class="container">
+            <!-- Featured News -->
+            <section class="section">
+                <div class="section-header">
+                    <h2 class="section-title">Noticia Destacada</h2>
+                    <p class="section-subtitle">Lo más relevante de nuestros servicios</p>
+                </div>
+                
+                <article class="news-detail">
+                    <div class="news-detail-card">
+                        <div class="news-detail-image">
+                            <img src="images/WhatsApp.jpg" alt="Ruptura en Red de Agua">
+                            <div class="news-detail-date">20 Feb 2024</div>
+                        </div>
+                        <div class="news-detail-content">
+                            <h2 class="news-detail-title">Ruptura en Red de Agua en Hospital Madre Obrera</h2>
+                            <p class="news-detail-excerpt">
+                                El día 20 de febrero de 2024 se registraron trabajos de reparación urgentes en la red de distribución de agua potable debido a una ruptura causada por maquinaria agrícola en la zona del Hospital Madre Obrera en Llallagua.
+                            </p>
+                            <p style="color: var(--neutral-700); line-height: 1.7;">
+                                Los equipos técnicos de EPSA BUSTILLO M.S respondieron de manera inmediata para solucionar el problema y restablecer el servicio. La reparación incluyó el reemplazo de la sección dañada de la tubería y la verificación del sistema para garantizar su correcto funcionamiento.
+                            </p>
+                            <p style="color: var(--neutral-700); line-height: 1.7;">
+                                Agradecemos a la comunidad por su comprensión durante los trabajos de reparación y reiteramos nuestro compromiso de brindar un servicio continuo y de calidad.
+                            </p>
+                        </div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- Recent News -->
+            <section class="section section-alt">
+                <div class="section-header">
+                    <h2 class="section-title">Noticias Recientes</h2>
+                    <p class="section-subtitle">Últimas novedades y actividades</p>
+                </div>
+                
+                <div class="news-grid">
+                    <article class="news-card">
+                        <div class="news-image">
+                            <img src="images/visita-estudiantes.jpg" alt="Visita Educativa">
+                            <div class="news-date">15 Feb 2024</div>
+                        </div>
+                        <div class="news-content">
+                            <h3 class="news-title">Visita Educativa de Estudiantes</h3>
+                            <p class="news-excerpt">
+                                Estudiantes de Comunicación Social de UNS XX realizaron una visita guiada a nuestras instalaciones para conocer los procesos de captación y tratamiento del agua potable.
+                            </p>
+                            <p style="color: var(--neutral-700); font-size: 14px; margin-top: var(--space-sm);">
+                                La visita incluyó una recorrido por la planta de tratamiento, laboratorio de calidad y oficinas administrativas, donde los estudiantes pudieron conocer de primera mano el trabajo que realizamos.
+                            </p>
+                        </div>
+                    </article>
+                    
+                    <article class="news-card">
+                        <div class="news-image">
+                            <img src="images/mantenimiento-programado.jpg" alt="Mantenimiento Programado">
+                            <div class="news-date">10 Feb 2024</div>
+                        </div>
+                        <div class="news-content">
+                            <h3 class="news-title">Mantenimiento Programado en Red Principal</h3>
+                            <p class="news-excerpt">
+                                Se llevarán a cabo trabajos de mantenimiento preventivo en la red principal de distribución durante el fin de semana. Se apologa por las molestias ocasionadas.
+                            </p>
+                            <p style="color: var(--neutral-700); font-size: 14px; margin-top: var(--space-sm);">
+                                Los trabajos incluyen la inspección y mantenimiento de válvulas, medidores y secciones de tuberías para garantizar el óptimo funcionamiento del sistema.
+                            </p>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Archive News -->
+            <section class="section">
+                <div class="section-header">
+                    <h2 class="section-title">Archivo de Noticias</h2>
+                    <p class="section-subtitle">Historial completo de nuestras comunicaciones</p>
+                </div>
+                
+                <div class="news-grid">
+                    <article class="news-card">
+                        <div class="news-image">
+                            <img src="images/represa.jpg" alt="Mejoras en Captación">
+                            <div class="news-date">28 Ene 2024</div>
+                        </div>
+                        <div class="news-content">
+                            <h3 class="news-title">Mejoras en el Sistema de Captación</h3>
+                            <p class="news-excerpt">
+                                Se completaron las mejoras en el sistema de captación de la represa principal, optimizando la capacidad de almacenamiento y la eficiencia del sistema.
+                            </p>
+                        </div>
+                    </article>
+                    
+                    <article class="news-card">
+                        <div class="news-image">
+                            <img src="images/laboratorio.jpg" alt="Certificación de Calidad">
+                            <div class="news-date">20 Ene 2024</div>
+                        </div>
+                        <div class="news-content">
+                            <h3 class="news-title">Renovación del Laboratorio de Calidad</h3>
+                            <p class="news-excerpt">
+                                Se renovaron los equipos del laboratorio para mejorar la precisión y velocidad en los análisis de calidad del agua.
+                            </p>
+                        </div>
+                    </article>
+                    
+                    <article class="news-card">
+                        <div class="news-image">
+                            <img src="images/planta-tratamiento.jpg" alt="Nueva Tecnología">
+                            <div class="news-date">15 Ene 2024</div>
+                        </div>
+                        <div class="news-content">
+                            <h3 class="news-title">Implementación de Nueva Tecnología</h3>
+                            <p class="news-excerpt">
+                                Se instaló un sistema automatizado de control de calidad que permite monitoreo en tiempo real de todos los procesos.
+                            </p>
+                        </div>
+                    </article>
+                    
+                    <article class="news-card">
+                        <div class="news-image">
+                            <img src="images/red-distribucion.jpg" alt="Expansión de Red">
+                            <div class="news-date">10 Ene 2024</div>
+                        </div>
+                        <div class="news-content">
+                            <h3 class="news-title">Expansión de Red en Zona Rural</h3>
+                            <p class="news-excerpt">
+                                Se extendió la red de distribución para brindar servicio a nuevas familias en la zona rural de Catavi.
+                            </p>
+                        </div>
+                    </article>
+                    
+                    <article class="news-card">
+                        <div class="news-image">
+                            <img src="images/oficina-principal.jpg" alt="Nueva Plataforma Digital">
+                            <div class="news-date">28 Dic 2023</div>
+                        </div>
+                        <div class="news-content">
+                            <h3 class="news-title">Lanzamiento de Nueva Plataforma Digital</h3>
+                            <p class="news-excerpt">
+                                Se lanzó una nueva plataforma digital para facilitar la consulta de facturas y servicios en línea.
+                            </p>
+                        </div>
+                    </article>
+                    
+                    <article class="news-card">
+                        <div class="news-image">
+                            <img src="images/proyecto-nuevo.jpg" alt="Plan de Desarrollo">
+                            <div class="news-date">20 Dic 2023</div>
+                        </div>
+                        <div class="news-content">
+                            <h3 class="news-title">Nuevo Plan de Desarrollo Sostenible</h3>
+                            <p class="news-excerpt">
+                                Se presentó el nuevo plan de desarrollo sostenible para los próximos 5 años, enfocado en la innovación y sostenibilidad.
+                            </p>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- News Categories -->
+            <section class="section section-alt">
+                <div class="section-header">
+                    <h2 class="section-title">Categorías de Noticias</h2>
+                    <p class="section-subtitle">Organiza la información por tipo de contenido</p>
+                </div>
+                
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">🔧</div>
+                        <h3 class="service-title">Mantenimiento y Reparaciones</h3>
+                        <p class="service-description">
+                            Comunicaciones sobre trabajos de mantenimiento, reparaciones y mejoras en la infraestructura.
+                        </p>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-icon">🏗️</div>
+                        <h3 class="service-title">Proyectos y Obras</h3>
+                        <p class="service-description">
+                            Información sobre nuevos proyectos, expansiones y mejoras en las instalaciones.
+                        </p>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-icon">🎓</div>
+                        <h3 class="service-title">Actividades Educativas</h3>
+                        <p class="service-description">
+                            Visitas, capacitaciones y actividades educativas relacionadas con nuestros servicios.
+                        </p>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-icon">📱</div>
+                        <h3 class="service-title">Servicios Digitales</h3>
+                        <p class="service-description">
+                            Novedades sobre servicios digitales, plataformas tecnológicas y mejoras en la atención.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Communication Channels -->
+            <section class="section">
+                <div class="section-header">
+                    <h2 class="section-title">Canales de Comunicación</h2>
+                    <p class="section-subtitle">Mantente conectado con nosotros</p>
+                </div>
+                
+                <div class="institution-grid">
+                    <div class="institution-content">
+                        <h3>Síguenos para más Información</h3>
+                        <p style="margin-bottom: var(--space-lg); line-height: 1.7; color: var(--neutral-700);">
+                            Mantente informado sobre todas nuestras actividades, novedades y anuncios importantes a través de nuestros diferentes canales de comunicación.
+                        </p>
+                        
+                        <div class="services-grid">
+                            <div class="service-card">
+                                <div class="service-icon">💬</div>
+                                <h3 class="service-title">WhatsApp</h3>
+                                <p class="service-description">
+                                    Recibe notificaciones directas y consulta información rápidamente
+                                </p>
+                                <a href="https://wa.me/59160466476" class="btn btn-primary">Contactar</a>
+                            </div>
+                            
+                            <div class="service-card">
+                                <div class="service-icon">📞</div>
+                                <h3 class="service-title">Teléfono</h3>
+                                <p class="service-description">
+                                    Línea directa para consultas y reportes de emergencia
+                                </p>
+                                <p style="font-weight: 600; color: var(--primary-500);">5821669</p>
+                            </div>
+                            
+                            <div class="service-card">
+                                <div class="service-icon">📧</div>
+                                <h3 class="service-title">Email</h3>
+                                <p class="service-description">
+                                    Consultas formales y documentación oficial
+                                </p>
+                                <p style="font-weight: 600; color: var(--primary-500);">epsallallagua@gmail.com</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="institution-image">
+                        <div style="background-color: var(--primary-100); padding: var(--space-lg); border-radius: var(--border-radius-md); text-align: center;">
+                            <h3 style="color: var(--primary-500); margin-bottom: var(--space-md);">Alertas Importantes</h3>
+                            <p style="margin-bottom: var(--space-md); color: var(--neutral-700);">
+                                Suscríbete a nuestros canales para recibir alertas importantes sobre:
+                            </p>
+                            <ul style="text-align: left; color: var(--neutral-700); margin-bottom: var(--space-md);">
+                                <li> Cortes programados</li>
+                                <li> Alertas de calidad</li>
+                                <li> Nuevos servicios</li>
+                                <li> Mantenimiento urgente</li>
+                                <li> Cambios en horarios</li>
+                            </ul>
+                            <div class="service-detail-features">
+                                <div class="feature-item">
+                                    <span>Alertas en tiempo real</span>
+                                </div>
+                                <div class="feature-item">
+                                    <span>Información oficial</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Page Navigation -->
+            <nav class="page-nav">
+                <a href="galeria.html" class="prev-page">Galería</a>
+                <a href="contacto.html" class="next-page">Contacto</a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-brand">
+                        <img src="images/LOGO-EPSA.png" alt="EPSA Logo" class="footer-logo">
+                        <h3>EPSA BUSTILLO M.S</h3>
+                        <p>Entidad Prestadora de Servicio de Agua potable y alcantarillado Sanitario</p>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Navegación</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="institucion.html">Institución</a></li>
+                        <li><a href="servicios.html">Servicios</a></li>
+                        <li><a href="historia.html">Historia</a></li>
+                        <li><a href="galeria.html">Galería</a></li>
+                        <li><a href="noticias.html">Noticias</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contacto</h4>
+                    <ul class="footer-contact">
+                        <li>📍 Calle 25 de Mayo, Llallagua</li>
+                        <li>📞 5821669</li>
+                        <li>📧 epsallallagua@gmail.com</li>
+                        <li>⏰ Lun-Vie: 08:00-12:00, 14:00-18:00</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Servicios</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Descargar Factura</a></li>
+                        <li><a href="#">Consultar Deuda</a></li>
+                        <li><a href="#">Reportar Avería</a></li>
+                        <li><a href="convocatorias.html">Convocatorias</a></li>
+                        <li><a href="#">Área Cliente</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 EPSA BUSTILLO M.S - Entidad Prestadora de Servicio de Agua potable y alcantarillado Sanitario. Todos los derechos reservados.</p>
+                <p>Desarrollado por: Victor Ibañez Gareca - <a href="https://wa.me/59160466476" target="_blank">WhatsApp</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="scripts/main.js"></script>
+    <script src="scripts/navigation.js"></script>
+    <script src="scripts/escudo3d.js"></script>
+</body>
+</html>

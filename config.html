@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuración Rápida - EPSA-Llallagua</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <style>
+        .config-container {
+            max-width: 800px;
+            margin: 100px auto;
+            padding: var(--space-xl);
+            background: var(--neutral-0);
+            border-radius: var(--border-radius-md);
+            box-shadow: var(--shadow-lg);
+        }
+        .config-section {
+            margin-bottom: var(--space-xl);
+            padding-bottom: var(--space-lg);
+            border-bottom: 1px solid var(--neutral-200);
+        }
+        .config-section:last-child {
+            border-bottom: none;
+        }
+        .config-group {
+            margin-bottom: var(--space-md);
+        }
+        .config-group label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: var(--space-xs);
+            color: var(--neutral-900);
+        }
+        .config-group input,
+        .config-group textarea {
+            width: 100%;
+            padding: var(--space-sm);
+            border: 1px solid var(--neutral-200);
+            border-radius: var(--border-radius-sm);
+            font-family: var(--font-body);
+        }
+        .config-actions {
+            display: flex;
+            gap: var(--space-sm);
+            margin-top: var(--space-lg);
+        }
+        .preview-link {
+            display: inline-block;
+            margin-top: var(--space-sm);
+            color: var(--primary-500);
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="config-container">
+        <h1>⚙️ Configuración Rápida - EPSA-Llallagua</h1>
+        <p>Esta herramienta te ayuda a personalizar rápidamente la información básica de tu sitio web sin necesidad de editar código.</p>
+        
+        <form id="quickConfig">
+            <!-- Información de Contacto -->
+            <div class="config-section">
+                <h2>📞 Información de Contacto</h2>
+                
+                <div class="config-group">
+                    <label for="companyName">Nombre de la Empresa</label>
+                    <input type="text" id="companyName" value="EPSA BUSTILLO M.S" placeholder="Nombre completo de la empresa">
+                </div>
+                
+                <div class="config-group">
+                    <label for="phone">Teléfono Principal</label>
+                    <input type="tel" id="phone" value="5821669" placeholder="Número de teléfono">
+                </div>
+                
+                <div class="config-group">
+                    <label for="email">Correo Electrónico</label>
+                    <input type="email" id="email" value="epsallallagua@gmail.com" placeholder="correo@empresa.com">
+                </div>
+                
+                <div class="config-group">
+                    <label for="address">Dirección</label>
+                    <textarea id="address" rows="2" placeholder="Dirección completa">Calle 25 de Mayo, Calle Cochabamba, casita de piedra</textarea>
+                </div>
+            </div>
+            
+            <!-- Horarios -->
+            <div class="config-section">
+                <h2>⏰ Horarios de Atención</h2>
+                
+                <div class="config-group">
+                    <label for="weekdayHours">Lunes a Viernes</label>
+                    <input type="text" id="weekdayHours" value="08:00 - 12:00, 14:00 - 18:00" placeholder="08:00 - 12:00, 14:00 - 18:00">
+                </div>
+                
+                <div class="config-group">
+                    <label for="weekendHours">Fines de Semana</label>
+                    <input type="text" id="weekendHours" value="Cerrado" placeholder="Cerrado o horarios específicos">
+                </div>
+            </div>
+            
+            <!-- Ubicación -->
+            <div class="config-section">
+                <h2>🗺️ Ubicación y Cobertura</h2>
+                
+                <div class="config-group">
+                    <label for="mainLocation">Ubicación Principal</label>
+                    <input type="text" id="mainLocation" value="Llallagua" placeholder="Ciudad principal">
+                </div>
+                
+                <div class="config-group">
+                    <label for="coverageAreas">Áreas de Cobertura (separadas por comas)</label>
+                    <input type="text" id="coverageAreas" value="Llallagua, Catavi, Siglo XX" placeholder="Ciudad 1, Ciudad 2, Ciudad 3">
+                </div>
+            </div>
+            
+            <!-- Historia -->
+            <div class="config-section">
+                <h2>📅 Información Histórica</h2>
+                
+                <div class="config-group">
+                    <label for="foundationYear">Año de Fundación</label>
+                    <input type="number" id="foundationYear" value="2002" placeholder="2002">
+                </div>
+                
+                <div class="config-group">
+                    <label for="mission">Misión (máximo 500 caracteres)</label>
+                    <textarea id="mission" rows="3" maxlength="500">Proporcionar servicios de agua potable y alcantarillado sanitario a la población del Commonwealth de Bustillo, con equidad, calidad, continuidad, solidaridad y eficiencia, buscando la autosostenibilidad.</textarea>
+                </div>
+                
+                <div class="config-group">
+                    <label for="vision">Visión (máximo 500 caracteres)</label>
+                    <textarea id="vision" rows="3" maxlength="500">Ser una entidad institucionalmente consolidada, identificada con la población mediante una gestión eficiente y transparente en la prestación de servicios de agua potable y alcantarillado sanitario.</textarea>
+                </div>
+            </div>
+            
+            <!-- Servicios -->
+            <div class="config-section">
+                <h2>💧 Servicios Principales</h2>
+                
+                <div class="config-group">
+                    <label for="service1">Servicio Principal 1</label>
+                    <input type="text" id="service1" value="Agua Potable" placeholder="Nombre del servicio">
+                </div>
+                
+                <div class="config-group">
+                    <label for="service1Desc">Descripción del Servicio 1</label>
+                    <textarea id="service1Desc" rows="2">Servicio público que comprende la captación, conducción, tratamiento y almacenamiento de recursos hídricos para su potabilización, entregado a los usuarios a través de redes de distribución.</textarea>
+                </div>
+                
+                <div class="config-group">
+                    <label for="service2">Servicio Principal 2</label>
+                    <input type="text" id="service2" value="Alcantarillado Sanitario" placeholder="Nombre del servicio">
+                </div>
+                
+                <div class="config-group">
+                    <label for="service2Desc">Descripción del Servicio 2</label>
+                    <textarea id="service2Desc" rows="2">Servicio público que comprende la recolección, tratamiento y disposición de aguas residuales en cuerpos receptores, protegiendo la salud pública y el medio ambiente.</textarea>
+                </div>
+                
+                <div class="config-group">
+                    <label for="service3">Servicio Principal 3</label>
+                    <input type="text" id="service3" value="Facturación Digital" placeholder="Nombre del servicio">
+                </div>
+                
+                <div class="config-group">
+                    <label for="service3Desc">Descripción del Servicio 3</label>
+                    <textarea id="service3Desc" rows="2">Servicios digitales para mayor comodidad de nuestros usuarios, incluyendo entrega digital de pré-facturas y descarga de facturas en línea.</textarea>
+                </div>
+            </div>
+            
+            <!-- Redes Sociales y Enlaces -->
+            <div class="config-section">
+                <h2>🔗 Redes Sociales y Enlaces</h2>
+                
+                <div class="config-group">
+                    <label for="facebook">Facebook (opcional)</label>
+                    <input type="url" id="facebook" placeholder="https://facebook.com/tu-pagina">
+                </div>
+                
+                <div class="config-group">
+                    <label for="whatsapp">WhatsApp (número con código de país)</label>
+                    <input type="tel" id="whatsapp" value="59160466476" placeholder="59160466476">
+                </div>
+                
+                <div class="config-group">
+                    <label for="invoiceUrl">URL de Descarga de Facturas (opcional)</label>
+                    <input type="url" id="invoiceUrl" placeholder="https://tu-sistema.com/facturas">
+                </div>
+            </div>
+            
+            <div class="config-actions">
+                <button type="button" class="btn btn-primary" onclick="generateConfig()">📝 Generar Configuración</button>
+                <button type="button" class="btn btn-secondary" onclick="downloadConfig()">💾 Descargar Config</button>
+                <button type="button" class="btn btn-secondary" onclick="previewSite()">👁️ Previsualizar Sitio</button>
+            </div>
+            
+            <a href="index.html" class="preview-link">→ Volver al sitio web principal</a>
+        </form>
+    </div>
+
+    <script>
+        function generateConfig() {
+            const config = {
+                companyName: document.getElementById('companyName').value,
+                phone: document.getElementById('phone').value,
+                email: document.getElementById('email').value,
+                address: document.getElementById('address').value,
+                weekdayHours: document.getElementById('weekdayHours').value,
+                weekendHours: document.getElementById('weekendHours').value,
+                mainLocation: document.getElementById('mainLocation').value,
+                coverageAreas: document.getElementById('coverageAreas').value,
+                foundationYear: document.getElementById('foundationYear').value,
+                mission: document.getElementById('mission').value,
+                vision: document.getElementById('vision').value,
+                service1: document.getElementById('service1').value,
+                service1Desc: document.getElementById('service1Desc').value,
+                service2: document.getElementById('service2').value,
+                service2Desc: document.getElementById('service2Desc').value,
+                service3: document.getElementById('service3').value,
+                service3Desc: document.getElementById('service3Desc').value,
+                facebook: document.getElementById('facebook').value,
+                whatsapp: document.getElementById('whatsapp').value,
+                invoiceUrl: document.getElementById('invoiceUrl').value,
+                lastUpdated: new Date().toISOString()
+            };
+            
+            // Guardar en localStorage
+            localStorage.setItem('epsaConfig', JSON.stringify(config));
+            
+            // Crear archivo de configuración
+            const configText = `// Configuración de EPSA-Llallagua
+// Generado automáticamente - ${new Date().toLocaleString()}
+
+export const siteConfig = ${JSON.stringify(config, null, 2)};
+
+// Para usar en el sitio web principal:
+// <script src="config.js"><\/script>
+// <script>
+//     console.log('Empresa:', siteConfig.companyName);
+//     console.log('Teléfono:', siteConfig.phone);
+//     // etc...
+// <\/script>`;
+            
+            // Crear y descargar archivo
+            const blob = new Blob([configText], { type: 'text/javascript' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'config.js';
+            a.click();
+            URL.revokeObjectURL(url);
+            
+            alert('✅ Configuración generada y descargada como config.js\n\nAhora puedes incluir este archivo en index.html y usar las variables para personalizar el contenido.');
+        }
+        
+        function downloadConfig() {
+            const config = {
+                companyName: document.getElementById('companyName').value,
+                phone: document.getElementById('phone').value,
+                email: document.getElementById('email').value,
+                address: document.getElementById('address').value,
+                weekdayHours: document.getElementById('weekdayHours').value,
+                weekendHours: document.getElementById('weekendHours').value,
+                mainLocation: document.getElementById('mainLocation').value,
+                coverageAreas: document.getElementById('coverageAreas').value,
+                foundationYear: document.getElementById('foundationYear').value,
+                mission: document.getElementById('mission').value,
+                vision: document.getElementById('vision').value,
+                service1: document.getElementById('service1').value,
+                service1Desc: document.getElementById('service1Desc').value,
+                service2: document.getElementById('service2').value,
+                service2Desc: document.getElementById('service2Desc').value,
+                service3: document.getElementById('service3').value,
+                service3Desc: document.getElementById('service3Desc').value,
+                facebook: document.getElementById('facebook').value,
+                whatsapp: document.getElementById('whatsapp').value,
+                invoiceUrl: document.getElementById('invoiceUrl').value
+            };
+            
+            const configJson = JSON.stringify(config, null, 2);
+            const blob = new Blob([configJson], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'epsa-config.json';
+            a.click();
+            URL.revokeObjectURL(url);
+            
+            alert('📥 Configuración descargada como epsa-config.json');
+        }
+        
+        function previewSite() {
+            const config = {
+                companyName: document.getElementById('companyName').value,
+                phone: document.getElementById('phone').value,
+                email: document.getElementById('email').value,
+                address: document.getElementById('address').value,
+                weekdayHours: document.getElementById('weekdayHours').value,
+                weekendHours: document.getElementById('weekendHours').value,
+                mainLocation: document.getElementById('mainLocation').value,
+                coverageAreas: document.getElementById('coverageAreas').value,
+                foundationYear: document.getElementById('foundationYear').value,
+                mission: document.getElementById('mission').value,
+                vision: document.getElementById('vision').value,
+                service1: document.getElementById('service1').value,
+                service1Desc: document.getElementById('service1Desc').value,
+                service2: document.getElementById('service2').value,
+                service2Desc: document.getElementById('service2Desc').value,
+                service3: document.getElementById('service3').value,
+                service3Desc: document.getElementById('service3Desc').value,
+                facebook: document.getElementById('facebook').value,
+                whatsapp: document.getElementById('whatsapp').value,
+                invoiceUrl: document.getElementById('invoiceUrl').value
+            };
+            
+            localStorage.setItem('epsaConfig', JSON.stringify(config));
+            window.open('index.html', '_blank');
+        }
+        
+        // Cargar configuración guardada al iniciar
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedConfig = localStorage.getItem('epsaConfig');
+            if (savedConfig) {
+                const config = JSON.parse(savedConfig);
+                
+                // Llenar el formulario con los datos guardados
+                Object.keys(config).forEach(key => {
+                    const element = document.getElementById(key);
+                    if (element && config[key]) {
+                        element.value = config[key];
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
